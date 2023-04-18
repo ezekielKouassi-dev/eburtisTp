@@ -1,6 +1,8 @@
 package com.eburtis.tp.interfaces;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,7 @@ import com.eburtis.tp.application.personne.PersonneVO;
 
 @RestController
 @RequestMapping("api/v1/personne")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonneController {
     
     @Autowired
@@ -25,7 +28,7 @@ public class PersonneController {
     }
 
     @PutMapping("/{id}")
-    public String updatePersonne(@PathVariable("id") Long pVoId, PersonneVO pVo) {
+    public String updatePersonne(@PathVariable("id") Long pVoId,@RequestBody PersonneVO pVo) {
         return personneService.updatePersonne(pVoId, pVo);
     }
 
@@ -37,5 +40,10 @@ public class PersonneController {
     @GetMapping("/{id}")
     public String fetchPersonne(@PathVariable("id") Long pVoId) {
         return personneService.fetchPersonne(pVoId);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletePersonne(@PathVariable("id") Long pVoId) {
+        return personneService.deletePersonne(pVoId);
     }
 }

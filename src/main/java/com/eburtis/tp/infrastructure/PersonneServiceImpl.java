@@ -72,6 +72,7 @@ public class PersonneServiceImpl implements PersonneService {
             jsonObject.put("id",personne.getId());
             jsonObject.put("nom", personne.getNom());
             jsonObject.put("prenoms", personne.getPrenoms());
+            jsonObject.put("departement", personne.getDepartement().getJson().toMap());
             jsonObject.put("age", personne.getAge());
             jsonArray.put(jsonObject);
         }

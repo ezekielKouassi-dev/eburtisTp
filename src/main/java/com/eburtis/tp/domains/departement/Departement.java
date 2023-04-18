@@ -1,49 +1,48 @@
-package com.eburtis.tp.domains.personne;
+package com.eburtis.tp.domains.departement;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.json.JSONObject;
 
-import com.eburtis.tp.domains.departement.Departement;
+import com.eburtis.tp.domains.personne.Personne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
-@Table(name = "personne")
+@Table(name = "departement")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Personne {
+public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom;
+    @Column(name = "code", nullable = false)
+    private String code;
 
-    private String prenoms;
+    @Column(name = "designation", nullable = false)
+    private String designation;
 
-    private Long age;
-
-    @ManyToOne
-    @JoinColumn(name = "id_departement")
-    private Departement departement;
+    @OneToMany(mappedBy = "departement")
+    private List<Personne> persons;
 
     public JSONObject getJson() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", this.id);
-        jsonObject.put("nom", this.nom);
-        jsonObject.put("prenoms", this.prenoms);
-        jsonObject.put("age", this.age);
+        jsonObject.put("code", this.code);
+        jsonObject.put("designation", this.designation);
         return jsonObject;
     }
-    
+
 }
