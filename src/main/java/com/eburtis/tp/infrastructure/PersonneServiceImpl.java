@@ -28,6 +28,7 @@ public class PersonneServiceImpl implements PersonneService {
         personne.setNom(personneVo.getNom());
         personne.setPrenoms(personneVo.getPrenoms());
         personne.setAge(personneVo.getAge());
+        personne.setDepartement(personneVo.getDepartement());
 
         personneRepository.save(personne);
 
@@ -50,6 +51,7 @@ public class PersonneServiceImpl implements PersonneService {
         personne.get().setNom(personneVo.getNom());
         personne.get().setPrenoms(personneVo.getPrenoms());
         personne.get().setAge(personneVo.getAge());
+        personne.get().setDepartement(personneVo.getDepartement());
 
         personneRepository.save(personne.get());
 

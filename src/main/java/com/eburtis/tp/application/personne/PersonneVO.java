@@ -1,5 +1,7 @@
 package com.eburtis.tp.application.personne;
 
+import com.eburtis.tp.domains.departement.Departement;
+
 public class PersonneVO {
     
     private String nom;
@@ -7,6 +9,8 @@ public class PersonneVO {
     private String prenoms;
 
     private Long age;
+
+    private Departement departement;
 
     // Getter
 
@@ -20,5 +24,9 @@ public class PersonneVO {
 
     public Long getAge() {
         return this.age;
+    }
+
+    public Departement getDepartement() {
+        return this.departement;
     }
 }
