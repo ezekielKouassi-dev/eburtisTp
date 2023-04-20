@@ -1,7 +1,13 @@
 package com.eburtis.tp.application.personne;
 
 import com.eburtis.tp.domains.departement.Departement;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonneVO {
     
     private String nom;

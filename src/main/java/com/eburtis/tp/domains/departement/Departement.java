@@ -37,6 +37,12 @@ public class Departement {
     @OneToMany(mappedBy = "departement")
     private List<Personne> persons;
 
+    public Departement(Long id, String code, String designation) {
+        this.id = id;
+        this.code = code;
+        this.designation = designation;
+    }
+
     public JSONObject getJson() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", this.id);
